@@ -22,7 +22,7 @@
 
     const buttonComponent = (
         <div id= "button_out">
-            <a href="https://github.com/messi618/CS648C1"><button id= "button_component">view my github repository</button></a>
+            <a href="https://github.com/messi618/CS648C1"><button id= "button_component">view my github repository!</button></a>
         </div>
     );
 

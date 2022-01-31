@@ -1,6 +1,6 @@
     //
     const nameComponent = (
-    <div id ="out">
+    <div id ="name_out">
             <h2 id = "name_component">Vivek Kumar</h2>
     </div>
     );

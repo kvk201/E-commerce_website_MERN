@@ -21,7 +21,7 @@ body{
 }
 
 
-#picture_out{
+#photo_out{
     text-align:center;
 }
 
@@ -30,7 +30,7 @@ body{
 }
 
 
-#picture_component{
+#photo_component{
     display: inline-block;
     margin-top: 25px;
     border: 2px solid black;

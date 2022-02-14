@@ -148,7 +148,7 @@ class ProductsList extends React.Component {
   }
 
   render() {
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "My Inventory:"), /*#__PURE__*/React.createElement("h3", null, "Show all available productss:"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ProductsTable, {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Our Inventory:"), /*#__PURE__*/React.createElement("h3", null, "Our available products:"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ProductsTable, {
       productsList: this.state.productsList
     }), /*#__PURE__*/React.createElement("h3", null, "Add new products to inventory:"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ProductsAdd, {
       createProducts: this.createProducts

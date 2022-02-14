@@ -150,8 +150,8 @@ class ProductsList extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <h1>My Inventory:</h1>
-                <h3>Show all available productss:</h3>
+                <h1>Our Inventory:</h1>
+                <h3>Our available products:</h3>
                 <hr/>
                 <ProductsTable productsList={
                         this.state.productsList

@@ -16,7 +16,9 @@ function ProductsRow(props){
 
 //table
 function ProductsTable(props){
-    const productsRows = props.productsList.map(products => <ProductsRow key={products.id} products={products}/>);
+    const productsRows = props.productsList.map(products => 
+    <   ProductsRow key={ products.id } 
+        products={products}/>  );
     return(
             <table className="bordered-table">
                 <thead>
@@ -112,7 +114,7 @@ class ProductsAdd extends React.Component{
                         Price-Per-Unit <br/>
                         <input ref="price" type="text" name="price" onChange={ this.handleChange } value={this.state.defaultPrice} /><br/><br/>                    
                         Image-URL<br/>
-                        <input type="text" name="image" defaultValue={this.state.URL[0][this.state.categoryValue] || ''} /><br/><br/>
+                        <input type="text" name="image" defaultValue={'' || this.state.URL[0][this.state.categoryValue] } /><br/><br/>
                     </div>
                     
                     <button className={btnClass}>Add Products:</button>
@@ -128,13 +130,14 @@ class ProductsList extends React.Component{
         this.state = { productsList: []};
         this.createProducts = this.createProducts.bind(this);
     }
-    componentDidMount() {
-        this.loadData();
-    }
+    
     loadData(){
         setTimeout(() => {
             this.setState({ productsList: initialProductsList });
         }, 500);
+    }
+    componentDidMount() {
+        this.loadData();
     }
     createProducts(products) {
         products.id = this.state.productsList.length + 1;
@@ -148,13 +151,18 @@ class ProductsList extends React.Component{
                 <h1>My Inventory:</h1>
                 <h3>Show all available productss:</h3>
                 <hr/>
-                <ProductsTable productsList={this.state.productsList}/>
+                <ProductsTable productsList={
+                        this.state.productsList
+                    }/>
                 <h3>Add new products to inventory:</h3>
                 <hr/>
-                <ProductsAdd createProducts={this.createProducts}/>
+                <ProductsAdd createProducts={
+                        this.createProducts
+                    }/>
             </React.Fragment>
         )
     }
 }
+//render
 const element = <ProductsList/>
 ReactDOM.render(element, document.getElementById('content'));

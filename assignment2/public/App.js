@@ -109,7 +109,7 @@ class ProductsAdd extends React.Component {
     }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "Image-URL", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
       type: "text",
       name: "image",
-      defaultValue: this.state.URL[0][this.state.categoryValue] || ''
+      defaultValue: '' || this.state.URL[0][this.state.categoryValue]
     }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("button", {
       className: btnClass
     }, "Add Products:")));
@@ -126,16 +126,16 @@ class ProductsList extends React.Component {
     this.createProducts = this.createProducts.bind(this);
   }
 
-  componentDidMount() {
-    this.loadData();
-  }
-
   loadData() {
     setTimeout(() => {
       this.setState({
         productsList: initialProductsList
       });
     }, 500);
+  }
+
+  componentDidMount() {
+    this.loadData();
   }
 
   createProducts(products) {
@@ -155,7 +155,8 @@ class ProductsList extends React.Component {
     }));
   }
 
-}
+} //render
+
 
 const element = /*#__PURE__*/React.createElement(ProductsList, null);
 ReactDOM.render(element, document.getElementById('content'));

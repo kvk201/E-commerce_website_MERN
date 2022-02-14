@@ -98,7 +98,9 @@ class ProductsAdd extends React.Component{
                 <form name="productsAdd" onSubmit={this.handleSubmit} className="form">
                     <div className="products_list_name_div">
                         Category: <br/>
-                        <select name="category" className="selectBox"  onChange={ (e) => this.setState( { categoryValue: e.target.value }) }>
+                        <select name="category" className="selectBox"  onChange={ (e) => 
+                                                        this.setState( { categoryValue: e.target.value }) 
+                                                        }>
                             <option value=""></option>
                             <option value="jackets">Jackets.</option>
                             <option value="sweaters">Sweaters.</option>

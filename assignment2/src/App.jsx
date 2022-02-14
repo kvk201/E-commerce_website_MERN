@@ -124,18 +124,18 @@
     class ProductList extends React.Component {
         constructor() {
             super();
-            this.state = { products: [], };
+            this.state = { products: [] };
             this.createProduct = this.createProduct.bind(this);
+        }
+
+        componentDidMount() {
+            this.loadData();
         }
         
         loadData() {
             setTimeout(() => {
                 this.setState({ products: [] });
             }, 500);
-        }
-    
-        componentDidMount() {
-            this.loadData();
         }
     
     

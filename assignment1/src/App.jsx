@@ -1,4 +1,5 @@
-    //
+    //We use jsx instead of JS because we can write our components like its written here (markup inside of javascript = jsx)
+    //otherwise we would have to write something like : const element = React.createElement('p',{},"hello world")
     const nameComponent = (
     <div id ="name_out">
             <h2 id = "name_component">Vivek Kumar</h2>

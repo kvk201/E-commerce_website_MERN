@@ -1,0 +1,44 @@
+table.bordered-table th, td { 
+    padding: 4px;
+    border: 2px solid rgb(108, 3, 255);
+}
+
+.price_image_div, .products_list_name_div {
+    float: left;
+}
+
+.price_image_div{
+    margin-left: 10rem;
+}
+
+table.bordered-table {
+    border-collapse:collapse; 
+    width: 65%; 
+    text-align: left;
+}
+
+
+.clearfix {
+    content: "";
+    display: table;
+    clear: both;
+    }
+
+
+
+.selectBox{
+    width: 180px;
+}
+
+.form input, .form select{
+    padding: 7px;
+    margin-top: 5px;
+    border: 2px solid rgb(64, 64, 250);
+}
+
+
+.btn{
+    font-size: 15px;
+    padding: 10px;
+    border: 2px solid rgb(64, 64, 250);
+}

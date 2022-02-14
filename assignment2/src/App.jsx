@@ -1,167 +1,160 @@
-    //We use jsx instead of JS because we can write our components like its written here (markup inside of javascript = jsx)
-    //otherwise we would have to write something like : const element = React.createElement('p',{},"hello world")
-    class ProductFilter extends React.Component {
-        render() {
-            return (
-                <div>Placeholder for product filter.</div>
-            );
-        }
-    }
-    
-        function ProductTable(props) {
-            const productRows = props.products.map(product =>
-                <ProductRow key={product.id} product={product} />
-            );
-                
-            return (
-                <table className="bordered-table">
-                    <thead>
-                        <tr>
-                            <th>Product Name</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                            <th>Image</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {productRows}
-                    </tbody>
-                </table>
-            );
-        }
-    
-        function ProductRow(props) {
-            const product = props.product;
-            return (
-                <tr>
-                    <td>{product.productName}</td>
-                    <td>${product.pricePerUnit}</td>
-                    <td>{product.category}</td>
-                    <td><a href={product.imageUrl} target="_blank">View</a></td>
-                </tr>
-            );
-        }
-    
+//empty initial products list
+const initialProductsList = [];
+
+//table row
+function ProductsRow(props){
+    const products = props.products;
+    return(
+        <tr>
+            <td>{products.productsName}</td>
+            <td>{"$" + products.price}</td>
+            <td>{products.category}</td>
+            <td><a href={products.image}>View:</a></td>
+        </tr>
+    );
+}
+
+//table
+function ProductsTable(props){
+    const productsRows = props.productsList.map(products => <ProductsRow key={products.id} products={products}/>);
+    return(
+            <table className="bordered-table">
+                <thead>
+                    <tr>
+                        <th>Products Name:</th>
+                        <th>Price:</th>
+                        <th>Category:</th>
+                        <th>Image:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {productsRows}
+                </tbody>
+            </table>
+    )
+}
 
 
-    //adding product    
-    class ProductAdd extends React.Component {
-        constructor() {
-            super();
-            this.handleSubmit = this.handleSubmit.bind(this);
-        }
-        
-        render() {
-            return (
-                <form name="productAdd" onSubmit={this.handleSubmit}>
-                    <table className="unbordered-table">
-                        <tr>
-                            <td>
-                                <div>category:
-                                    <br />
-                                    <select id="categoryMenu" name="category">
-                                        <option value="Shirts">shirts!</option>
-                                        <option value="Jeans">jeans!</option>
-                                        <option value="Jackets">jackets!</option>
-                                        <option value="Sweaters">sweaters!</option>
-                                        <option value="Accessories">accessories!</option>
-                                    </select>
-                                </div>
-                            </td>
-
-                            <br />
-                            <td>
-                                <div>Price Per Unit:
-                                    <br /><input type="text" name="pricePerUnit" defaultValue="$" />
-                                </div>
-                            </td>
-                        </tr>
-
-                        <br />
-                        <tr>
-                            <td>
-                                <div>Product Name:
-                                    <br /><input type="text" name="productName" />
-                                </div>
-                            </td>
-                            <br />
-                            <td>
-                                <div>Image-URL:
-                                    <br /><input type="text" name="imageUrl" />
-                                </div>
-                            </td>
-                            <br />
-                        </tr>
-
-                        <br />
-                        <tr>
-                            <td>
-                                <button>Add Product:</button>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            );
-        }
-
-        handleSubmit(e) {
-            e.preventDefault();
-            const form = document.forms.productAdd;
-    
-            const product = {
-                productName: form.productName.value, pricePerUnit: form.pricePerUnit.value.substr(1), category: form.category.value, imageUrl: form.imageUrl.value,
+//table add
+class ProductsAdd extends React.Component{
+    constructor(){
+        super();
+        this.state = { defaultPrice: '$',
+                        categoryValue: '',
+                        URL: [
+                            { 
+                                jackets: "https://www.northernthreads.co.uk/clothing-c3/jackets-c7/pretty-green-soft-shell-jacket-black-p39527",
+                                sweaters: "https://www.northernthreads.co.uk/clothing-c3/sweatshirts-c13/diesel-girk-crew-sweatshirt-yellow-p39651",
+                                accessories: "https://www.northernthreads.co.uk/accessories-c5",
+                                shirts: "https://www.northernthreads.co.uk/clothing-c3/shirts-c1/pretty-green-check-shirt-navy-p36069",
+                                jeans: "https://www.northernthreads.co.uk/clothing-c3/jeans-c2/replay-anbass-hyperflex-dark-blue-p40290"
+                            }
+                          ]
+                    };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);      
+    }   
+    handleSubmit(e){
+        e.preventDefault();
+        const form = document.forms.productsAdd;
+        const products = {
+            productsName: form.productsName.value, 
+            category: form.category.value,
+            price: form.price.value.replace(/\$/g,""),
+            image: form.image.value
             }
-    
-            this.props.createProduct(product);
-            form.pricePerUnit.value = "$";
-            form.productName.value = "";        
-            form.imageUrl.value = "";
-            form.category.value = "";
+            this.props.createProducts(products);
+            form.productsName.value="";
+            form.category.value="";
+            this.setState({
+                defaultPrice: '$',
+                                URL: [
+                                    {
+                                    jackets: "https://www.northernthreads.co.uk/clothing-c3/jackets-c7/pretty-green-soft-shell-jacket-black-p39527",
+                                    sweaters: "https://www.northernthreads.co.uk/clothing-c3/sweatshirts-c13/diesel-girk-crew-sweatshirt-yellow-p39651",
+                                    accessories: "https://www.northernthreads.co.uk/accessories-c5",
+                                    shirts: "https://www.northernthreads.co.uk/clothing-c3/shirts-c1/pretty-green-check-shirt-navy-p36069",
+                                    jeans: "https://www.northernthreads.co.uk/clothing-c3/jeans-c2/replay-anbass-hyperflex-dark-blue-p40290"
+                                    }
+                  ]
+              });
         }
     
+    handleChange(e){
+        this.setState( { defaultPrice: e.target.value });
     }
-    
-    class ProductList extends React.Component {
-        constructor() {
-            super();
-            this.state = { products: [] };
-            this.createProduct = this.createProduct.bind(this);
-        }
+   
+    render(){
+        let btnClass = [
+            'btn',
+            'clearfix'
+          ]
+          btnClass = btnClass.join(' ');
+                
+        return(
+            <div>
+                <form name="productsAdd" onSubmit={this.handleSubmit} className="form">
+                    <div className="products_list_name_div">
+                        Category: <br/>
+                        <select name="category" className="selectBox"  onChange={ (e) => this.setState( { categoryValue: e.target.value }) }>
+                            <option value=""></option>
+                            <option value="jackets">Jackets.</option>
+                            <option value="sweaters">Sweaters.</option>
+                            <option value="shirts">Shirts.</option>
+                            <option value="jeans">Jeans.</option>
+                            <option value="accessories">Accessories</option>
+                        </select><br/><br/>
 
-        componentDidMount() {
-            this.loadData();
-        }
-        
-        loadData() {
-            setTimeout(() => {
-                this.setState({ products: [] });
-            }, 500);
-        }
-    
-    
-        createProduct(product) {
-            product.id = this.state.products.length + 1;
-            const newProductList = this.state.products.slice();
-            newProductList.push(product);
-            this.setState({ products: newProductList });
-        }
-    
-        render() {
-            return (
-                <React.Fragment>
-                    <h1>My Company Inventory:</h1>
-                    <h4>Show all available products:</h4>
-                    <hr />
-                    <ProductTable products={this.state.products} />
-                    <br />
-                    <h4>Add a new product to inventory:</h4>
-                    <hr />
-                    <ProductAdd createProduct={this.createProduct} />
-                </React.Fragment>
-            );
-        }
+                        Products-Name <br/>
+                        <input type="text" name="productsName" /><br/><br/>
+                    </div>
+                    <div className="price_image_div">
+                        Price-Per-Unit <br/>
+                        <input ref="price" type="text" name="price" onChange={ this.handleChange } value={this.state.defaultPrice} /><br/><br/>                    
+                        Image-URL<br/>
+                        <input type="text" name="image" defaultValue={this.state.URL[0][this.state.categoryValue] || ''} /><br/><br/>
+                    </div>
+                    
+                    <button className={btnClass}>Add Products:</button>
+                </form>
+        </div>
+        );
     }
-    const element = <ProductList />;
-    //render
-    ReactDOM.render(element, document.getElementById('contents'));
-    
+}
+
+class ProductsList extends React.Component{
+    constructor(){
+        super();
+        this.state = { productsList: []};
+        this.createProducts = this.createProducts.bind(this);
+    }
+    componentDidMount() {
+        this.loadData();
+    }
+    loadData(){
+        setTimeout(() => {
+            this.setState({ productsList: initialProductsList });
+        }, 500);
+    }
+    createProducts(products) {
+        products.id = this.state.productsList.length + 1;
+        const newProductsList = this.state.productsList.slice();
+        newProductsList.push(products);
+        this.setState({productsList: newProductsList});
+    }
+    render(){
+        return(
+            <React.Fragment>
+                <h1>My Inventory:</h1>
+                <h3>Show all available productss:</h3>
+                <hr/>
+                <ProductsTable productsList={this.state.productsList}/>
+                <h3>Add new products to inventory:</h3>
+                <hr/>
+                <ProductsAdd createProducts={this.createProducts}/>
+            </React.Fragment>
+        )
+    }
+}
+const element = <ProductsList/>
+ReactDOM.render(element, document.getElementById('content'));

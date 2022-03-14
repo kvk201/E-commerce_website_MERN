@@ -6,9 +6,6 @@ type Product {
     category: Inventory!
     image: String!
 }
-type Mutation {
-    productAdd(product: ProductInput!): Product!
-}
 enum Inventory {
     SHIRTS
     JEANS
@@ -16,10 +13,11 @@ enum Inventory {
     SWEATERS
     ACCESSORIES
 }
-
-
 type Query {
   productList: [Product!]!
+}
+type Mutation {
+    productAdd(product: ProductInput!): Product!
 }
 
 input ProductInput{
@@ -28,4 +26,4 @@ input ProductInput{
     category: Inventory!
     image: String!
 
-}z
+}

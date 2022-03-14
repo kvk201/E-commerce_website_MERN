@@ -2,7 +2,7 @@
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
-const url = process.env.DB_URL || 'mongodb+srv://<username>:<password>@cluster0.yl4xz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const url = process.env.DB_URL || 'mongodb+srv://vivek:kumar@cluster0.yl4xz.mongodb.net/myFirstDatabase/db?retryWrites=true&w=majority';
 
 // Atlas URL  - replace UUU with user, PPP with password, XXX with hostname
 // const url = 'mongodb+srv://UUU:PPP@cluster0-XXX.mongodb.net/issuetracker?retryWrites=true';

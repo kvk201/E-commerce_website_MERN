@@ -10,10 +10,12 @@
  *   mongo mongodb+srv://user:pwd@xxx.mongodb.net/issuetracker scripts/init.mongo.js
  * MLab:
  *   mongo mongodb://user:pwd@xxx.mlab.com:33533/issuetracker scripts/init.mongo.js
+ * 
  */
 
 
-
+//mongo mongodb+srv://vivek:kumar@cluster0.yl4xz.mongodb.net/db C:\Github\CS648C1\assignment4\api\scripts/init.mongo.js
+//mongo mongodb+srv://vivek:kumar@cluster0.yl4xz.mongodb.net/db scripts/init.mongo.js
 
 db.products.remove({});
 
@@ -30,7 +32,7 @@ const productsDB = [
     id: 2,
     productName: 'yellow sweater',
     price: '12.43',
-    category: 'SWEATER',
+    category: 'SWEATERS',
     image: 'https://www.northernthreads.co.uk/clothing-c3/sweatshirts-c13/diesel-girk-crew-sweatshirt-yellow-p39651',
   },
 

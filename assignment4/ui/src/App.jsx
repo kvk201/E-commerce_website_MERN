@@ -147,6 +147,7 @@
     }
 
     async function fetchGraphQl(query, variables = {}) {
+      console.log("zczx"+JSON.stringify({ query, variables }));
       try {
         const response = await fetch(`${window.ENV.UI_API_ENDPOINT}/graphql`, {
           method: 'POST',
@@ -159,11 +160,13 @@
         const result = JSON.parse(body);
 
         if (result.errors) {
+          console.log("asaasa")
           const error = result.errors[0];
           if (error.extensions.code === 'BAD_USER_INPUT') {
             const details = error.extensions.exception.errors.join('\n ');
             alert(`${error.message}:\n ${details}`);
           } else {
+            console.log("aaaa")
             alert(`${error.extensions.code}: ${error.message}`);
           }
         }
@@ -182,6 +185,7 @@
       }
 
       async loadData() {
+        console.log("load");
         const query = `query {
           productList {
             id productName price category image

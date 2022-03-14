@@ -24,7 +24,7 @@ function testWithCallbacks(callback) {
     const collection = db.collection('products');
 
     const product = {
-      id: 1, productName: 'abc', price: 6.99, category: 'SHIRTS', image: 'http://kj',
+      id: 1, productName: 'abc', price: 6.99, category: 'SHIRTS', image: 'http://google.com',
     };
     collection.insertOne(product, (err, result) => {
       if (err) {
@@ -58,7 +58,7 @@ async function testWithAsync() {
     const collection = db.collection('products');
 
     const product = {
-      id: 2, productName: 'abc', price: 7.99, category: 'PANTS', image: 'http://kj',
+      id: 2, productName: 'abc', price: 7.99, category: 'PANTS', image: 'http://google.com',
     };
     const result = await collection.insertOne(product);
     console.log('Result of insert:\n', result.insertedId);

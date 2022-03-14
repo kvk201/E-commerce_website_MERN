@@ -8,7 +8,7 @@
   const { MongoClient } = require('mongodb');
 
 //
-  const url = process.env.DB_URL || 'mongodb+srv://vivek:kumar@cluster0.yl4xz.mongodb.net/test';
+  const url = process.env.DB_URL || 'mongodb+srv://<username>:<password>@cluster0.yl4xz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
   const port = process.env.API_SERVER_PORT || 3000;
   let db;
 

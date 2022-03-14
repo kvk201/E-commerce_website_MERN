@@ -58,7 +58,7 @@ async function testWithAsync() {
     const collection = db.collection('products');
 
     const product = {
-      id: 2, productName: 'abc', price: 7.99, category: 'PANTS', image: 'http://google.com',
+        id: 2, productName: 'abc', price: 7.99, category: 'PANTS', image: 'http://google.com',
     };
     const result = await collection.insertOne(product);
     console.log('Result of insert:\n', result.insertedId);
@@ -67,9 +67,9 @@ async function testWithAsync() {
       .toArray();
     console.log('Result of find:\n', docs);
   } catch (err) {
-    console.log(err);
+      console.log(err);
   } finally {
-    client.close();
+      client.close();
   }
 }
 

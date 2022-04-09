@@ -1,9 +1,16 @@
 temp/node_modules/
+node_modules/
 assignment1/node_modules/
 assignment2/node_modules/
 assignment3/node_modules/
 assignment4/node_modules/
+assignment4/api/node_modules/
+assignment4/ui/node_modules/
+
 assignment5/node_modules/
+assignment5/api/node_modules/
+assignment5/ui/node_modules/
+
 assignment6/node_modules/
 assignment7/node_modules/
 assignment8/node_modules/

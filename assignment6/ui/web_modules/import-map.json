@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "preact": "./preact.js",
+    "react-router-dom": "./react-router-dom.js"
+  }
+}

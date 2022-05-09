@@ -1,0 +1,50 @@
+type Product {
+    _id: ID!
+    id: Int!
+    productName: String!
+    price: Float!
+    category: Inventory!
+    image: String!
+}
+
+input ProductInput{
+    productName: String!
+    price: Float!
+    category: Inventory!
+    image: String!
+
+}
+
+type ProductCounts {
+  productName: String!
+}
+
+
+
+enum Inventory {
+    shirts
+    jeans
+    jackets
+    sweaters
+    accessories
+}
+
+input ProductUpdateInputs {
+    productName: String
+    price: Float
+    category: Inventory
+    image: String
+}
+
+
+type Query {
+  productList: [Product!]!
+  product(id: Int!): Product!
+  productCounts: [ProductCounts!]!
+}
+type Mutation {
+    productAdd(product: ProductInput!): Product!
+    productUpdate(id: Int!, changes: ProductUpdateInputs!): Product!
+    productDelete(id: Int!): Boolean!
+}
+

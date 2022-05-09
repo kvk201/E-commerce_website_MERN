@@ -113,11 +113,11 @@
                 <br />
                 <select name="category" className="selectBox" onChange={(e) => this.setState({ categoryValue: e.target.value })}>
                       <option aria-label="None" value="" />
-                      <option aria-label="shirts" value="SHIRTS">SHIRTS:</option>
-                      <option aria-label="shirts" value="JEANS">JEANS:</option>
-                      <option aria-label="jackets" value="JACKETS">JACKETS:</option>
-                      <option aria-label="sweaters" value="SWEATERS">SWEATERS:</option>
-                      <option aria-label="accessories" value="ACCESSORIES">ACCESSORIES:</option>
+                      <option aria-label="shirts" value="shirts">shirts:</option>
+                      <option aria-label="shirts" value="jeans">jeans:</option>
+                      <option aria-label="jackets" value="jackets">jackets:</option>
+                      <option aria-label="sweaters" value="sweaters">sweaters:</option>
+                      <option aria-label="accessories" value="accessories">accessories:</option>
                 </select>
                 <br />
                 <br />

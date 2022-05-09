@@ -2,17 +2,44 @@
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
-const url = process.env.DB_URL || 'mongodb+srv://vivek:kumar@cluster0.yl4xz.mongodb.net/db?retryWrites=true&w=majority';
+const url = process.env.DB_URL ||'mongodb+srv://vivek:kumar@cluster0.yl4xz.mongodb.net/db';
 
 // Atlas URL  - replace UUU with user, PPP with password, XXX with hostname
 // const url = 'mongodb+srv://UUU:PPP@cluster0-XXX.mongodb.net/issuetracker?retryWrites=true';
 
 // mLab URL - replace UUU with user, PPP with password, XXX with hostname
 // const url = 'mongodb://UUU:PPP@XXX.mlab.com:33533/issuetracker';
+async function testWithAsync() {
+  const h = 'h';
+  console.log(h);
+  console.log('\n--- testWithAsync ---');
+  const client = new MongoClient(url, { useNewUrlParser: true });
+  try {
+    await client.connect();
+    console.log('Connected to MongoDB URL', url);
+    const db = client.db();
+    const collection = db.collection('products');
+    const f = 0;
+    console.log(f);
+    const product = {
+      id: 2, productName: 'abc', price: 7.99, category: 'pants', image: 'http://kj',
+    };
+    const result = await collection.insertOne(product);
+    console.log('Result of insert:\n', result.insertedId);
+ 
+    const docs = await collection.find({ _id: result.insertedId })
+      .toArray();
+    console.log('Result of find:\n', docs);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    client.close();
+  }
+}
 
 
 function testWithCallbacks(callback) {
-  console.log('\n--- test-With-Callbacks ---');
+  console.log('\n--- testWithCallbacks ---');
   const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
   client.connect((connErr) => {
     if (connErr) {
@@ -23,9 +50,9 @@ function testWithCallbacks(callback) {
 
     const db = client.db();
     const collection = db.collection('products');
-
+    const f = 0;
     const product = {
-      id: 1, productName: 'test1', price: 64.49, category: 'shirts', image: 'http://google.com',
+      id: 1, productName: 'abc', price: 6.99, category: 'shirts', image: 'http://google.com',
     };
     collection.insertOne(product, (err, result) => {
       if (err) {
@@ -49,30 +76,7 @@ function testWithCallbacks(callback) {
   });
 }
 
-async function testWithAsync() {
-  console.log('\n--- test-With-Async ---');
-  const client = new MongoClient(url, { useNewUrlParser: true });
-  try {
-    await client.connect();
-    console.log('Connected to MongoDB URL', url);
-    const db = client.db();
-    const collection = db.collection('products');
 
-    const product = {
-        id: 2, productName: 'test2', price: 21.33, category: 'PANTS', image: 'http://google.com',
-    };
-    const result = await collection.insertOne(product);
-    console.log('Result of insert: \n', result.insertedId);
-
-    const docs = await collection.find({ _id: result.insertedId })
-      .toArray();
-    console.log('Result of find: \n', docs);
-  } catch (err) {
-      console.log(err);
-  } finally {
-      client.close();
-  }
-}
 
 testWithCallbacks((err) => {
   if (err) {

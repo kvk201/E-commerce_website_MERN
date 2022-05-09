@@ -7,11 +7,11 @@ type Product {
     image: String!
 }
 enum Inventory {
-    SHIRTS
-    JEANS
-    JACKETS
-    SWEATERS
-    ACCESSORIES
+    shirts
+    jeans
+    jackets
+    sweaters
+    accessories
 }
 type Query {
   productList: [Product!]!

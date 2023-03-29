@@ -1,5 +1,0 @@
-
-#gitignore
-ui/node_modules
-api/node_modules
-App.js
